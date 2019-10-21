@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Admin - Quicklearning</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="description" content="#">
+	<meta name="keywords" content="Admin">
+	<meta name="author" content="#">
+	
+	<link rel="icon" href="https://colorlib.com//polygon/adminty/files/assets/images/favicon.ico" type="image/x-icon">
+	
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+	
+	<link rel="stylesheet" type="text/css" href="/admin/bower_components/bootstrap/css/bootstrap.min.css">
+	
+	<link rel="stylesheet" type="text/css" href="/admin/assets/icon/feather/css/feather.css">
+	<link rel="stylesheet" type="text/css" href="/admin/assets/icon/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/admin/assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/admin/assets/css/jquery.mCustomScrollbar.css">
+	
+    <div layout:fragment="style"></div>
+</head>
+<body>
+
+	<div th:replace="admin/fragments/loader :: loader"></div>
+	
+	<div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            
+            <div th:replace="admin/fragments/header :: header"></div>
+
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    
+                    <div th:replace="admin/fragments/left_bar :: left_bar"></div>
+                    
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                
+                                	<div layout:fragment="content"></div>
+                                    
+                                </div>
+                                <div id="styleSelector">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- script -->
+    <!-- <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script> -->
+    <script type="09608d3cb3ff5e67be6582c0-text/javascript" src="/admin/bower_components/jquery/js/jquery.min.js"></script>
+	<script type="09608d3cb3ff5e67be6582c0-text/javascript" src="/admin/bower_components/jquery-ui/js/jquery-ui.min.js"></script>
+	<script type="09608d3cb3ff5e67be6582c0-text/javascript" src="/admin/bower_components/popper.js/js/popper.min.js"></script>
+	<script type="09608d3cb3ff5e67be6582c0-text/javascript" src="/admin/bower_components/bootstrap/js/bootstrap.min.js"></script>
+	
+	<script type="09608d3cb3ff5e67be6582c0-text/javascript" src="/admin/bower_components/jquery-slimscroll/js/jquery.slimscroll.js"></script>
+	
+	<script type="09608d3cb3ff5e67be6582c0-text/javascript" src="/admin/bower_components/modernizr/js/modernizr.js"></script>
+	
+	<script type="09608d3cb3ff5e67be6582c0-text/javascript" src="/admin/bower_components/chart.js/js/Chart.js"></script>
+	
+	<script src="/admin/assets/pages/widget/amchart/amcharts.js" type="09608d3cb3ff5e67be6582c0-text/javascript"></script>
+	<script src="/admin/assets/pages/widget/amchart/serial.js" type="09608d3cb3ff5e67be6582c0-text/javascript"></script>
+	<script src="/admin/assets/pages/widget/amchart/light.js" type="09608d3cb3ff5e67be6582c0-text/javascript"></script>
+	<script src="/admin/assets/js/jquery.mCustomScrollbar.concat.min.js" type="09608d3cb3ff5e67be6582c0-text/javascript"></script>
+	<script type="09608d3cb3ff5e67be6582c0-text/javascript" src="/admin/assets/js/SmoothScroll.js"></script>
+	<script src="/admin/assets/js/pcoded.min.js" type="09608d3cb3ff5e67be6582c0-text/javascript"></script>
+	
+	<script src="/admin/assets/js/vartical-layout.min.js" type="09608d3cb3ff5e67be6582c0-text/javascript"></script>
+	<script type="09608d3cb3ff5e67be6582c0-text/javascript" src="/admin/assets/pages/dashboard/custom-dashboard.js"></script>
+	<script type="09608d3cb3ff5e67be6582c0-text/javascript" src="/admin/assets/js/script.min.js"></script>
+	
+	<script async src="/lib/vendor/gtag/js.js"></script>
+	<script type="09608d3cb3ff5e67be6582c0-text/javascript">
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+
+  		gtag('config', 'UA-23581568-13');
+	</script>
+	<script src="/admin/bower_components/cloudflare-static/rocket-loader.min.js" data-cf-settings="09608d3cb3ff5e67be6582c0-|49" defer=""></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <div layout:fragment="script"></div>
+</body>
+</html>

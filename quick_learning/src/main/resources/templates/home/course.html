@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{home/fragments/main_layout}">
+<head>
+    <title>Khoá học</title>
+</head>
+<body>
+
+	<div layout:fragment="content">
+	
+		<div th:replace="home/section/section_course :: breadcrumb"></div>
+		
+		<div th:replace="home/section/section_course :: share"></div>
+		
+		<div th:replace="home/section/section_course :: detail"></div>
+		
+		<div th:replace="home/section/section_course :: relative"></div>
+		
+	</div>
+</body>
+</html>
