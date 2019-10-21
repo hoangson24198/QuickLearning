@@ -24,18 +24,22 @@ public class CustomUserDetailService implements UserDetailsService {
     private UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<User> dbUser = userRepository.findByEmail(email);
-        LOGGER.info("Fetched user : " + dbUser + " by " + email);
-        return dbUser.map(UserDetailsRequest::new)
-                .orElseThrow(() -> new UsernameNotFoundException("Couldn't find a matching user email in the database for " + email));
+    @Transactional
+    public UserDetails loadUserByUsername(String email) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() ->
+                        new NotFoundException("User not found [email: " + email + "]")
+                );
+
+        return UserDetailsRequest.create(user);
     }
 
     @Transactional
     public UserDetails loadUserById(Integer id) {
-        Optional<User> dbUser = userRepository.findById(id);
-        LOGGER.info("Fetched user : " + dbUser + " by " + id);
-        return dbUser.map(UserDetailsRequest::new)
-                .orElseThrow(() -> new UsernameNotFoundException("Couldn't find a matching user id in the database for " + id));
+        User user = userRepository.findById(id).orElseThrow(
+                () -> new NotFoundException("User not found [id: " + id + "]")
+        );
+
+        return UserDetailsRequest.create(user);
     }
 }

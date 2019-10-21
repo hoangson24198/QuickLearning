@@ -5,6 +5,7 @@ import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;
@@ -24,12 +25,27 @@ public class JwtTokenProvider {
     @Value("${app.jwt.claims.refresh.name}")
     private String jwtClaimRefreshName;
 
-    public String generateToken(UserDetailsRequest userDetailsRequest) {
+   /* public String generateToken(UserDetailsRequest userDetailsRequest) {
         Instant expiryDate = Instant.now().plusMillis(jwtExpirationInMs);
         return Jwts.builder()
-                .setSubject(Long.toString(userDetailsRequest.getUserId()))
+                .setSubject(Integer.toString(userDetailsRequest.getId()))
                 .setIssuedAt(Date.from(Instant.now()))
                 .setExpiration(Date.from(expiryDate))
+                .signWith(SignatureAlgorithm.HS512, jwtSecret)
+                .compact();
+    }*/
+
+    public String generateToken(Authentication authentication) {
+
+        UserDetailsRequest userPrincipal = (UserDetailsRequest) authentication.getPrincipal();
+
+        Date now = new Date();
+        Date expiryDate = new Date(now.getTime() + jwtExpirationInMs);
+
+        return Jwts.builder()
+                .setSubject(Integer.toString(userPrincipal.getUserId()))
+                .setIssuedAt(new Date())
+                .setExpiration(expiryDate)
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .compact();
     }

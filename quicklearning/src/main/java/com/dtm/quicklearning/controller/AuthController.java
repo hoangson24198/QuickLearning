@@ -5,6 +5,7 @@ import com.dtm.quicklearning.ApiResponse.response.ApiStatus;
 import com.dtm.quicklearning.event.OnGenerateResetLinkEvent;
 import com.dtm.quicklearning.event.OnUserAccountChangeEvent;
 import com.dtm.quicklearning.event.OnUserRegistrationCompleteEvent;
+import com.dtm.quicklearning.model.entity.User;
 import com.dtm.quicklearning.model.exception.PasswordResetException;
 import com.dtm.quicklearning.model.exception.PasswordResetLinkException;
 import com.dtm.quicklearning.model.exception.UserLoginException;
@@ -49,19 +50,20 @@ public class AuthController {
 
     @PostMapping(value = "/login")
     public ApiResponse login(@Valid @RequestBody LoginRequest loginRequest){
-        Authentication authentication = authService.login(loginRequest)
+        /*Authentication authentication = authService.login(loginRequest)
                 .orElseThrow(() -> new UserLoginException("Couldn't login user [" + loginRequest + "]"));
         UserDetailsRequest userDetailsRequest = (UserDetailsRequest) authentication.getPrincipal();
         LOGGER.info("Logged in User returned [API]: " + userDetailsRequest.getUsername());
         SecurityContextHolder.getContext().setAuthentication(authentication);
-
         return authService.createAndPersistRefreshTokenForDevice(authentication, loginRequest)
                 .map(RefreshToken::getToken)
                 .map(refreshToken -> {
                     String jwtToken = authService.generateToken(userDetailsRequest);
                     return ApiResponse.of(new JwtAuthenticationResponse(jwtToken, refreshToken, tokenProvider.getExpiryDuration()));
                 })
-                .orElseThrow(() -> new UserLoginException("Couldn't create refresh token for: [" + loginRequest + "]"));
+                .orElseThrow(() -> new UserLoginException("Couldn't create refresh token for: [" + loginRequest + "]"));*/
+        JwtAuthenticationResponse jwtAuthenticationResponse = authService.login(loginRequest);
+        return ApiResponse.of(ApiStatus.SUCCESS,jwtAuthenticationResponse.toString());
     }
 
     @PostMapping(value = "/register")

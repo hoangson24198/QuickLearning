@@ -1,7 +1,9 @@
 package com.dtm.quicklearning.service.impl;
 
+import com.dtm.quicklearning.model.eNum.RoleName;
 import com.dtm.quicklearning.model.entity.Role;
 import com.dtm.quicklearning.model.entity.User;
+import com.dtm.quicklearning.model.exception.AppException;
 import com.dtm.quicklearning.model.request.SignUpRequest;
 import com.dtm.quicklearning.model.request.UserDetailsRequest;
 import com.dtm.quicklearning.model.response.UserSummary;
@@ -15,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -71,7 +74,7 @@ public class UserServiceImpl implements UserService {
 
     private Set<Role> getRolesForNewUser(Boolean isToBeMadeAdmin) {
         Set<Role> newUserRoles = new HashSet<>(roleRepository.findAll());
-        if (!isToBeMadeAdmin) {
+        if (isToBeMadeAdmin) {
             newUserRoles.removeIf(Role::isAdminRole);
         }
         LOGGER.info("Setting user roles: " + newUserRoles);
@@ -81,11 +84,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public User createUser(SignUpRequest signUpRequest) {
         User newUser = new User();
+        Role role = roleRepository.findByName(RoleName.ROLE_guest)
+                .orElseThrow(() -> new AppException("User Role not set. Add default roles to database."));
         Boolean isNewUserAsAdmin = signUpRequest.getRegisterAsAdmin();
         newUser.setEmail(signUpRequest.getEmail());
         newUser.setFullName(signUpRequest.getName());
         newUser.setPassWord(passwordEncoder.encode(signUpRequest.getPassword()));
-        newUser.addRoles(getRolesForNewUser(isNewUserAsAdmin));
+        if (isNewUserAsAdmin) {
+            newUser.setRoles(getRolesForNewUser(isNewUserAsAdmin));
+        }else {
+            newUser.setRoles(Collections.singleton(role));
+        }
         newUser.setActive(true);
         newUser.setIsEmailVerified(false);
         return newUser;

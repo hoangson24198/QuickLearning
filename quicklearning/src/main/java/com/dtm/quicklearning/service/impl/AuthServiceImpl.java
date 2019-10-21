@@ -4,6 +4,7 @@ import com.dtm.quicklearning.model.entity.PasswordResetToken;
 import com.dtm.quicklearning.model.entity.User;
 import com.dtm.quicklearning.model.exception.*;
 import com.dtm.quicklearning.model.request.*;
+import com.dtm.quicklearning.model.response.JwtAuthenticationResponse;
 import com.dtm.quicklearning.model.token.EmailVerificationToken;
 import com.dtm.quicklearning.model.token.RefreshToken;
 import com.dtm.quicklearning.repository.RoleRepository;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -59,9 +61,25 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public Optional<Authentication> login(LoginRequest loginRequest) {
-        return Optional.ofNullable(authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(),
-                loginRequest.getPassword())));
+    public JwtAuthenticationResponse/*Optional<Authentication>*/ login(LoginRequest loginRequest) {
+        /*return Optional.ofNullable(authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(),
+                loginRequest.getPassword())));*/
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        loginRequest.getEmail(),
+                        loginRequest.getPassword()
+                )
+        );
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        String jwt = tokenProvider.generateToken(authentication);
+
+        UserDetailsRequest userPrincipal = (UserDetailsRequest) authentication.getPrincipal();
+
+        LOGGER.info("User with [email: {}] has logged in", userPrincipal.getEmail());
+
+        return new JwtAuthenticationResponse(jwt);
     }
 
     @Override
@@ -129,7 +147,7 @@ public class AuthServiceImpl implements AuthService {
         return Optional.of(currentUser);
     }
 
-    @Override
+   /* @Override
     public String generateToken(UserDetailsRequest userDetailsRequest) {
         return tokenProvider.generateToken(userDetailsRequest);
     }
@@ -137,7 +155,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public String generateTokenFromUserId(Integer userId) {
         return tokenProvider.generateTokenFromUserId(userId);
-    }
+    }*/
 
     @Override
     public Optional<PasswordResetToken> generatePasswordResetToken(PasswordResetLinkRequest passwordResetLinkRequest) {
@@ -170,7 +188,7 @@ public class AuthServiceImpl implements AuthService {
                 });
     }
 
-    @Override
+    /*@Override
     public Optional<RefreshToken> createAndPersistRefreshTokenForDevice(Authentication authentication, LoginRequest loginRequest) {
         User currentUser = (User) authentication.getPrincipal();
         userRepository.findById(currentUser.getUserId())
@@ -181,7 +199,7 @@ public class AuthServiceImpl implements AuthService {
         RefreshToken refreshToken = refreshTokenService.createRefreshToken();
         refreshToken = refreshTokenService.save(refreshToken);
         return Optional.ofNullable(refreshToken);
-    }
+    }*/
 
     @Override
     public boolean emailAlreadyExists(String email) {

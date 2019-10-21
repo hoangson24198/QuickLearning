@@ -17,6 +17,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "user")
 public class User {
 
     @Id
@@ -38,7 +39,7 @@ public class User {
     @Column(name = "full_name")
     private String fullName;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_authority", joinColumns = {
             @JoinColumn(name = "user_id", referencedColumnName = "user_id")}, inverseJoinColumns = {
             @JoinColumn(name = "role_id", referencedColumnName = "role_id")})
@@ -78,12 +79,11 @@ public class User {
         this.isEmailVerified = user.isEmailVerified;
     }
 
-    public void addRole(Role role) {
+   /* public void addRole(Role role) {
         roles.add(role);
-        role.getUserList().add(this);
     }
 
     public void addRoles(Set<Role> roles) {
         roles.forEach(this::addRole);
-    }
+    }*/
 }

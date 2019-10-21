@@ -13,6 +13,7 @@ import java.util.Set;
 @Entity
 @Data
 @NoArgsConstructor
+@Table(name = "role")
 public class Role {
 
     @Id
@@ -25,11 +26,7 @@ public class Role {
     @Column(length = 60)
     private RoleName name;
 
-    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
-    @JsonIgnore
-    private Set<User> userList = new HashSet<>();
-
     public boolean isAdminRole() {
-        return null != this && this.name.equals(RoleName.ROLE_admin);
+        return null != this && !this.name.equals(RoleName.ROLE_admin);
     }
 }
