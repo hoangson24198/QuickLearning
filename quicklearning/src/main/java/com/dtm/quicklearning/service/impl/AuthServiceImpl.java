@@ -1,13 +1,9 @@
 package com.dtm.quicklearning.service.impl;
 
-import com.dtm.quicklearning.filter.UserPrincipal;
-import com.dtm.quicklearning.model.eNum.RoleName;
 import com.dtm.quicklearning.model.entity.PasswordResetToken;
-import com.dtm.quicklearning.model.entity.Role;
 import com.dtm.quicklearning.model.entity.User;
 import com.dtm.quicklearning.model.exception.*;
 import com.dtm.quicklearning.model.request.*;
-import com.dtm.quicklearning.model.response.JwtAuthenticationResponse;
 import com.dtm.quicklearning.model.token.EmailVerificationToken;
 import com.dtm.quicklearning.model.token.RefreshToken;
 import com.dtm.quicklearning.repository.RoleRepository;
@@ -20,11 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.Optional;
 
 @Service

@@ -3,7 +3,6 @@ package com.dtm.quicklearning.controller;
 import com.dtm.quicklearning.ApiResponse.response.ApiResponse;
 import com.dtm.quicklearning.ApiResponse.response.ApiStatus;
 import com.dtm.quicklearning.event.OnUserAccountChangeEvent;
-import com.dtm.quicklearning.filter.UserPrincipal;
 import com.dtm.quicklearning.model.exception.UpdatePasswordException;
 import com.dtm.quicklearning.model.request.UpdatePasswordRequest;
 import com.dtm.quicklearning.model.request.UserDetailsRequest;
@@ -18,8 +17,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.data.repository.query.Param;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,13 +38,13 @@ public class UserController {
 
     @GetMapping("/current")
     @PreAuthorize("hasAnyRole('ROLE_guest','ROLE_student','ROLE_teacher')")
-    public UserSummary getCurrentUser(@CurrentUser UserPrincipal currentUser){
+    public UserSummary getCurrentUser(@CurrentUser UserDetailsRequest currentUser){
         LOGGER.info(currentUser.getEmail() + " has role: " + currentUser.getRoles());
         return userService.getCurrentUser(currentUser);
     }
 
     @GetMapping("/admins")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_admin')")
     @ApiOperation(value = "Returns the list of configured admins. Requires ADMIN Access")
     public ApiResponse getAllAdmins() {
         LOGGER.info("Inside secured resource with admin");
@@ -55,7 +52,7 @@ public class UserController {
     }
 
     @PostMapping("/password/update")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAnyRole('ROLE_guest','ROLE_student','ROLE_teacher')")
     @ApiOperation(value = "Allows the user to change his password once logged in by supplying the correct current " +
             "password")
     public ApiResponse updateUserPassword(@CurrentUser UserDetailsRequest userDetailsRequest,

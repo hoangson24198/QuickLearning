@@ -38,10 +38,10 @@ public class User {
     @Column(name = "full_name")
     private String fullName;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "user_authority", joinColumns = {
+            @JoinColumn(name = "user_id", referencedColumnName = "user_id")}, inverseJoinColumns = {
+            @JoinColumn(name = "role_id", referencedColumnName = "role_id")})
     private Set<Role> roles = new HashSet<>();
 
     @Column(name = "is_active", nullable = false)

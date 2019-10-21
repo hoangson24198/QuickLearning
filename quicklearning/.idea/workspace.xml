@@ -2,10 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5e86bbc-a591-41fd-8721-503a130d26da" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_activation_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_mail_mail_1_4_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_freemarker_freemarker_2_3_29.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_5_2_0_RELEASE.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quicklearning.iml" beforeDir="false" afterPath="$PROJECT_DIR$/quicklearning.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/filter/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/filter/JwtAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/filter/UserPrincipal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/model/entity/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/model/entity/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/model/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/model/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/model/request/UserDetailsRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/model/request/UserDetailsRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/service/impl/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/service/impl/AuthServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/service/security/CurrentUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/service/security/CurrentUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/service/security/CustomUserDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/service/security/CustomUserDetailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/service/security/JwtAuthenticationEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/service/security/JwtAuthenticationEntryPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/service/security/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dtm/quicklearning/service/security/JwtTokenProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/controller/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/filter/JwtAuthenticationFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/filter/JwtAuthenticationFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/filter/UserPrincipal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/model/entity/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/model/entity/Role.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/model/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/model/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/model/request/UserDetailsRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/model/request/UserDetailsRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/service/impl/AuthServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/service/impl/AuthServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/service/impl/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/service/security/CustomUserDetailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/service/security/CustomUserDetailService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/service/security/JwtAuthenticationEntryPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/service/security/JwtAuthenticationEntryPoint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/service/security/JwtTokenProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dtm/quicklearning/service/security/JwtTokenProvider.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,12 +48,20 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
   </component>
   <component name="ProjectId" id="1SVu0J7sDexaxUyYXLhe7DnkVM7" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -33,7 +73,13 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/rác" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -86,5 +132,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update register" />
+    <option name="LAST_COMMIT_MESSAGE" value="update register" />
   </component>
 </project>

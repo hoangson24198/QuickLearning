@@ -1,6 +1,5 @@
 package com.dtm.quicklearning.service.impl;
 
-import com.dtm.quicklearning.filter.UserPrincipal;
 import com.dtm.quicklearning.model.entity.Role;
 import com.dtm.quicklearning.model.entity.User;
 import com.dtm.quicklearning.model.request.SignUpRequest;
@@ -36,11 +35,11 @@ public class UserServiceImpl implements UserService {
     private RoleRepository roleRepository;
 
     @Override
-    public UserSummary getCurrentUser(UserPrincipal userPrincipal) {
+    public UserSummary getCurrentUser(UserDetailsRequest userDetailsRequest) {
         return UserSummary.builder()
-                .id(userPrincipal.getId())
-                .email(userPrincipal.getEmail())
-                .name(userPrincipal.getName())
+                .id(userDetailsRequest.getUserId())
+                .email(userDetailsRequest.getEmail())
+                .name(userDetailsRequest.getFullName())
                 .build();
     }
 
@@ -84,6 +83,7 @@ public class UserServiceImpl implements UserService {
         User newUser = new User();
         Boolean isNewUserAsAdmin = signUpRequest.getRegisterAsAdmin();
         newUser.setEmail(signUpRequest.getEmail());
+        newUser.setFullName(signUpRequest.getName());
         newUser.setPassWord(passwordEncoder.encode(signUpRequest.getPassword()));
         newUser.addRoles(getRolesForNewUser(isNewUserAsAdmin));
         newUser.setActive(true);
