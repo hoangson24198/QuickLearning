@@ -4,9 +4,11 @@ import com.dtm.quicklearning.ApiResponse.response.ApiResponse;
 import com.dtm.quicklearning.ApiResponse.response.ApiStatus;
 import com.dtm.quicklearning.event.OnGenerateResetLinkEvent;
 import com.dtm.quicklearning.event.OnUserAccountChangeEvent;
+import com.dtm.quicklearning.event.OnUserRegistrationCompleteEvent;
 import com.dtm.quicklearning.model.exception.PasswordResetException;
 import com.dtm.quicklearning.model.exception.PasswordResetLinkException;
 import com.dtm.quicklearning.model.exception.UserLoginException;
+import com.dtm.quicklearning.model.exception.UserRegistrationException;
 import com.dtm.quicklearning.model.request.*;
 import com.dtm.quicklearning.model.response.JwtAuthenticationResponse;
 import com.dtm.quicklearning.model.token.RefreshToken;
@@ -65,11 +67,15 @@ public class AuthController {
 
     @PostMapping(value = "/register")
     public ApiResponse register(@Valid @RequestBody SignUpRequest signUpRequest){
-        Integer isRegister = authService.registerUser(signUpRequest);
-        if (isRegister!=null){
-            return ApiResponse.of(ApiStatus.SUCCESS,isRegister.toString());
-        }
-        return ApiResponse.error(ApiStatus.SUCCESS,"Register failed!");
+        return authService.registerUser(signUpRequest)
+                .map(user -> {
+                    UriComponentsBuilder urlBuilder = ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/auth/registrationConfirmation");
+                    OnUserRegistrationCompleteEvent onUserRegistrationCompleteEvent = new OnUserRegistrationCompleteEvent(user, urlBuilder);
+                    applicationEventPublisher.publishEvent(onUserRegistrationCompleteEvent);
+                    LOGGER.info("Registered User returned [API[: " + user);
+                    return ApiResponse.of(ApiStatus.SUCCESS,"User registered successfully. Check your email for verification");
+                })
+                .orElseThrow(() -> new UserRegistrationException(signUpRequest.getEmail(), "Missing user object in database"));
     }
 
     @PostMapping(value = "/password/resetlink")
